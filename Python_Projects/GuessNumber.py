@@ -15,5 +15,26 @@ def GuessNumber(number):
   else:
       print(f"You guessed the crrect number which is: {random_number}")          
 
+
+def computerGuess(number):
+  low = 1
+  high = number
+  feedback = ""
+  while feedback != "c":
+    if low!=high:
+      guess = random.randint(low, high)
+    else:
+      guess = low 
+    feedback = input(f"is {guess} too high (h) too low(l) or correct (c)? ").lower()
+    if feedback == "h":
+      high = guess -1
+    if feedback == "l":
+      low = guess + 1
+  print(f"Yay the computer guessed the number, {guess} correctly! ")  
+        
+  
+    
 User_Number = int(input("Up to what number do you want to guess? >> "))
-GuessNumber(User_Number)
+#GuessNumber(User_Number)
+
+computerGuess(User_Number)
