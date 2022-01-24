@@ -5,26 +5,23 @@
 # Input: root = [3,9,20,null,null,15,7]
 # Output: [[3],[9,20],[15,7]]
 # For BFS Breadth first search use Queue to implement the array
-import collections
-
-
 class Solution:
-    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        result = []
 
-    result = []
+        q = collections.deque()
+        q.append(root)
 
-    q = collections.deque()
-    q.append(root)
-
-    while q:
-        qlen = len(q)
-        level = []
-        for i in range(qlen):
-            node = q.popleft()
-            if node:
-                level.append(node.val)
-                q.append(node.left)
-                q.append(node.right)
-        result.append(level)
+        while q:
+            qlen = len(q)
+            level = []
+            for i in range(qlen):
+                node = q.popleft()
+                if node:
+                    level.append(node.val)
+                    q.append(node.left)
+                    q.append(node.right)
+            if level:
+                result.append(level)
 
         return result
